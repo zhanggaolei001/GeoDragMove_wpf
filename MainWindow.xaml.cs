@@ -245,7 +245,7 @@ namespace SampleCode
                     rectangle.Y += dragDelta.Y;
                 }
                 var vertices = ((ViewModel)DataContext).Rectangles;
-                Polygon.Points = new PointCollection(vertices.Select(v => new Point(v.X, v.Y)));
+                //Polygon.Points = new PointCollection(vertices.Select(v => new Point(v.X, v.Y)));
             }
             else if (isLeftMouseDownOnRectangle)
             {

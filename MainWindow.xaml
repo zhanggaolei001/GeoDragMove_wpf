@@ -44,11 +44,11 @@
 
     </Window.DataContext>
     <Grid> 
-        <Polygon Points="{Binding Rectangles,Converter={StaticResource RectangleConverter}}"
+        <!--<Polygon Points="{Binding Rectangles,Converter={StaticResource RectangleConverter}}"
                  Stroke="Blue"
                  Name="Polygon"
                  Fill="LightBlue"
-                 StrokeThickness="2"></Polygon>
+                 StrokeThickness="2"></Polygon>-->
         <ListBox x:Name="listBox"
                  Background="Transparent"
                  ItemsSource="{Binding Rectangles}"
