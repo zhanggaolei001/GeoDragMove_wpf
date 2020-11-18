@@ -19,7 +19,7 @@ namespace SampleCode
         /// <summary>
         /// The list of rectangles that is displayed in the ListBox.
         /// </summary>
-        private ObservableCollection<RectangleViewModel> rectangles = new ObservableCollection<RectangleViewModel>();
+        private ObservableCollection<VertexViewModel> rectangles = new ObservableCollection<VertexViewModel>();
 
         #endregion Data Members
 
@@ -28,46 +28,23 @@ namespace SampleCode
             //
             // Populate the view model with some example data.
             //
-            var r1 = new RectangleViewModel(10, 10);
+            var r1 = new VertexViewModel(10, 10);    
+            var r2 = new VertexViewModel(70, 220);     
+            var r3 = new VertexViewModel(150, 130);
+            var r4 = new VertexViewModel(10, 130);
+            var r5 = new VertexViewModel(450, 13);
+            var r6 = new VertexViewModel(150, 10);
             rectangles.Add(r1);
-            var r2 = new RectangleViewModel(70, 60);
             rectangles.Add(r2);
-            var r3 = new RectangleViewModel(150, 130);
             rectangles.Add(r3);
-            History=new Stack<RectangleViewModel>(100);
-           
-            rectangles.CollectionChanged += Rectangles_CollectionChanged;
-        }
-
-        private static Stack<RectangleViewModel> History;
-        private void Rectangles_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Add:
-
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-
-                    break;
-                case NotifyCollectionChangedAction.Replace:
-
-                    break;
-                case NotifyCollectionChangedAction.Move:
-
-                    break;
-                case NotifyCollectionChangedAction.Reset:
-
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            } 
-        }
-
+            rectangles.Add(r4);
+            rectangles.Add(r5);
+            rectangles.Add(r6); 
+        } 
         /// <summary>
         /// The list of rectangles that is displayed in the ListBox.
         /// </summary>
-        public ObservableCollection<RectangleViewModel> Rectangles
+        public ObservableCollection<VertexViewModel> Rectangles
         {
             get
             {

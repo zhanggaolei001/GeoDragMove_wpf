@@ -11,7 +11,7 @@ namespace SampleCode
     /// <summary>
     /// Defines the view-model for a simple displayable rectangle.
     /// </summary>
-    public class RectangleViewModel : INotifyPropertyChanged
+    public class VertexViewModel : INotifyPropertyChanged
     {
         #region Data Members
 
@@ -28,10 +28,10 @@ namespace SampleCode
 
         #endregion Data Members
 
-        public RectangleViewModel()
+        public VertexViewModel()
         {
         }
-        public RectangleViewModel(double x, double y)
+        public VertexViewModel(double x, double y)
         {
             this.x = x;
             this.y = y;

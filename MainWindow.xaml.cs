@@ -55,7 +55,7 @@ namespace SampleCode
         /// <summary>
         /// Set to 'true' when dragging a rectangle.
         /// </summary>
-        private bool isDraggingRectangle = false;
+        private bool isDragging = false;
 
         #endregion Data Members
 
@@ -102,7 +102,7 @@ namespace SampleCode
             }
 
             var rectangle = (FrameworkElement)sender;
-            var rectangleViewModel = (RectangleViewModel)rectangle.DataContext;
+            var rectangleViewModel = (VertexViewModel)rectangle.DataContext;
 
             isLeftMouseDownOnRectangle = true;
 
@@ -162,9 +162,9 @@ namespace SampleCode
             if (isLeftMouseDownOnRectangle)
             {
                 var rectangle = (FrameworkElement)sender;
-                var rectangleViewModel = (RectangleViewModel)rectangle.DataContext;
+                var rectangleViewModel = (VertexViewModel)rectangle.DataContext;
 
-                if (!isDraggingRectangle)
+                if (!isDragging)
                 {
                     //
                     // Execute mouse up selection logic only if there was no drag operation.
@@ -221,7 +221,7 @@ namespace SampleCode
                 e.Handled = true;
             }
 
-            isDraggingRectangle = false;
+            isDragging = false;
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace SampleCode
         /// </summary>
         private void Rectangle_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isDraggingRectangle)
+            if (isDragging)
             {
                 //
                 // Drag-move selected rectangles.
@@ -239,7 +239,7 @@ namespace SampleCode
 
                 origMouseDownPoint = curMouseDownPoint;
 
-                foreach (RectangleViewModel rectangle in this.listBox.SelectedItems)
+                foreach (VertexViewModel rectangle in this.listBox.SelectedItems)
                 {
                     rectangle.X += dragDelta.X;
                     rectangle.Y += dragDelta.Y;
@@ -262,7 +262,7 @@ namespace SampleCode
                     //
                     // When the mouse has been dragged more than the threshold value commence dragging the rectangle.
                     //
-                    isDraggingRectangle = true;
+                    isDragging = true;
                 }
 
                 e.Handled = true;
@@ -322,7 +322,7 @@ namespace SampleCode
                     // A click and release in empty space clears the selection.
                     //
                     listBox.SelectedItems.Clear();
-                    foreach (RectangleViewModel rectangleViewModel in this.ViewModel.Rectangles)
+                    foreach (VertexViewModel rectangleViewModel in this.ViewModel.Rectangles)
                     {
 
                         rectangleViewModel.BorderVisibility = Visibility.Hidden;
@@ -449,7 +449,7 @@ namespace SampleCode
             //
             // Find and select all the list box items.
             //
-            foreach (RectangleViewModel rectangleViewModel in this.ViewModel.Rectangles)
+            foreach (VertexViewModel rectangleViewModel in this.ViewModel.Rectangles)
             {
                 Rect itemRect = new Rect(rectangleViewModel.X, rectangleViewModel.Y, 10, 10);
                 if (dragRect.Contains(itemRect))
@@ -463,7 +463,7 @@ namespace SampleCode
 
         private void UpdateSelectedItemsView()
         {
-            foreach (RectangleViewModel item in ViewModel.Rectangles)
+            foreach (VertexViewModel item in ViewModel.Rectangles)
             {
                 if (listBox.SelectedItems.Contains(item))
                 {

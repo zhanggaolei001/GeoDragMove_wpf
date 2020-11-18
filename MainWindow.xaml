@@ -12,7 +12,7 @@
     <Window.Resources> 
         <local:ColorToBrushConverter x:Key="colorToBrushConverter" />
         <local:RectangleConverter x:Key="RectangleConverter"></local:RectangleConverter>
-        <DataTemplate DataType="{x:Type local:RectangleViewModel}">
+        <DataTemplate DataType="{x:Type local:VertexViewModel}">
             <Grid   Margin="-5,-5">
                 <Border BorderThickness="6"
                         BorderBrush="Blue"
@@ -21,7 +21,7 @@
                 </Border>
                 <Rectangle Width="10"
                            Height="10"
-                           Stroke="Black"
+                           Stroke="Red"
                            StrokeThickness="1"
                            Fill="Transparent"
                            Cursor="Hand"
@@ -32,7 +32,7 @@
 
             </Grid>
 
-        </DataTemplate>
+        </DataTemplate> 
     </Window.Resources>
 
     <Window.DataContext>
@@ -44,18 +44,10 @@
 
     </Window.DataContext>
     <Grid> 
-        <Canvas x:Name="dragSelectionCanvas"
-                Visibility="Collapsed">
-            <Border x:Name="dragSelectionBorder"
-                    BorderBrush="Blue"
-                    BorderThickness="1"
-                    Background="LightBlue"
-                    CornerRadius="1"
-                    Opacity="0.5" />
-        </Canvas>
         <Polygon Points="{Binding Rectangles,Converter={StaticResource RectangleConverter}}"
                  Stroke="Blue"
                  Name="Polygon"
+                 Fill="LightBlue"
                  StrokeThickness="2"></Polygon>
         <ListBox x:Name="listBox"
                  Background="Transparent"
@@ -77,5 +69,14 @@
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
+        <Canvas x:Name="dragSelectionCanvas"
+                Visibility="Collapsed">
+            <Border x:Name="dragSelectionBorder"
+                    BorderBrush="Blue"
+                    BorderThickness="1"
+                    Background="LightBlue"
+                    CornerRadius="1"
+                    Opacity="0.5" />
+        </Canvas>
     </Grid>
 </Window>

@@ -29,7 +29,7 @@ namespace SampleCode
         public object Convert(
             object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var vertices = value as IEnumerable<RectangleViewModel>;
+            var vertices = value as IEnumerable<VertexViewModel>;
 
             return vertices != null
                 ? new PointCollection(vertices.Select(v => new Point(v.X,v.Y)))
